@@ -1,3 +1,9 @@
+# ARM version (tested on Raspberry PI)
+
+I installed napi-macros, replaced fuse-native and fuse-shared-library-linux with ARM compatible forks, and it now works on ARM.
+
+The only ugly part is that I have to copy to the final image the yarn cache and this libraries source code, making the final result image bigger. If you find a fix PRs are welcomed.
+
 # Xen-Orchestra docker container
 
 [![image pulls](https://img.shields.io/docker/pulls/ronivay/xen-orchestra.svg)](https://hub.docker.com/r/ronivay/xen-orchestra) [![image size (tag)](https://img.shields.io/docker/image-size/ronivay/xen-orchestra/latest)](https://hub.docker.com/r/ronivay/xen-orchestra)
