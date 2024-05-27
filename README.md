@@ -1,5 +1,7 @@
 # ARM version (tested on Raspberry PI)
 
+[![image size (tag)](https://ghcr-badge.deta.dev/andreitelteu/xen-orchestra-docker-arm/size?tag=latest&label=image+size&trim=)](https://github.com/AndreiTelteu/xen-orchestra-docker-arm/pkgs/container/xen-orchestra-docker-arm)
+
 I installed napi-macros, replaced fuse-native and fuse-shared-library-linux with ARM compatible forks, and it now works on ARM.
 
 The only ugly part is that I have to copy to the final image the yarn cache and this libraries source code, making the final result image bigger. If you find a fix PRs are welcomed.
@@ -10,10 +12,6 @@ image: ghcr.io/andreitelteu/xen-orchestra-docker-arm:latest
 ```
 
 # Xen-Orchestra docker container
-
-[![image pulls](https://img.shields.io/docker/pulls/ronivay/xen-orchestra.svg)](https://hub.docker.com/r/ronivay/xen-orchestra) [![image size (tag)](https://img.shields.io/docker/image-size/ronivay/xen-orchestra/latest)](https://hub.docker.com/r/ronivay/xen-orchestra)
-
-[![](https://github.com/ronivay/xen-orchestra-docker/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/ronivay/xen-orchestra-docker/actions?query=workflow%3Abuild)
 
 This repository contains files to build Xen-Orchestra community edition docker container with all features and plugins installed
 
