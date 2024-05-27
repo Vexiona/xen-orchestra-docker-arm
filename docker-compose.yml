@@ -2,7 +2,7 @@ version: '3'
 services:
     xen-orchestra:
         restart: unless-stopped
-        image: xen-orchestra-arm
+        image: ghcr.io/andreitelteu/xen-orchestra-docker-arm:latest
         container_name: xen-orchestra
         stop_grace_period: 1m
         ports:
