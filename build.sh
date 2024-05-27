@@ -4,5 +4,5 @@ docker buildx build \
 --platform=linux/arm64 \
 --progress=plain \
 --build-arg BUILDKIT_STEP_LOG_MAX_SIZE=20485760 \
--t xen-orchestra-arm \
+-t ghcr.io/andreitelteu/xen-orchestra-docker-arm \
 .

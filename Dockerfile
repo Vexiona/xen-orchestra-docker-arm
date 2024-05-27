@@ -60,6 +60,7 @@ RUN find /etc/xen-orchestra/packages/ -maxdepth 1 -mindepth 1 \
 FROM arm64v8/node:18-bookworm-slim
 
 MAINTAINER Andrei Telteu <andrei@telteu.ro>
+LABEL org.opencontainers.image.source https://github.com/andreitelteu/xen-orchestra-docker-arm
 
 # Install set of dependencies for running Xen Orchestra
 ENV DEBIAN_FRONTEND=noninteractive
@@ -74,6 +75,7 @@ COPY --from=build /etc/xen-orchestra /etc/xen-orchestra
 COPY --from=build /usr/local/share/.config /usr/local/share/.config
 COPY --from=build /etc/fuse-native /etc/fuse-native
 COPY --from=build /etc/fuse-shared-library-linux /etc/fuse-shared-library-linux
+RUN rm -rf /etc/fuse-native/.git /etc/fuse-shared-library-linux/.git
 
 # Logging
 RUN ln -sf /proc/1/fd/1 /var/log/redis/redis-server.log && \

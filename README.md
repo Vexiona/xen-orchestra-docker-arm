@@ -4,6 +4,11 @@ I installed napi-macros, replaced fuse-native and fuse-shared-library-linux with
 
 The only ugly part is that I have to copy to the final image the yarn cache and this libraries source code, making the final result image bigger. If you find a fix PRs are welcomed.
 
+Just replace the image in  docker-compose:
+```
+image: ghcr.io/andreitelteu/xen-orchestra-docker-arm:latest
+```
+
 # Xen-Orchestra docker container
 
 [![image pulls](https://img.shields.io/docker/pulls/ronivay/xen-orchestra.svg)](https://hub.docker.com/r/ronivay/xen-orchestra) [![image size (tag)](https://img.shields.io/docker/image-size/ronivay/xen-orchestra/latest)](https://hub.docker.com/r/ronivay/xen-orchestra)
@@ -24,25 +29,25 @@ Xen-Orchestra offers supported version of their product in an appliance (not run
 
 - Clone this repository
 ```
-git clone https://github.com/ronivay/xen-orchestra-docker
+git clone https://github.com/andreitelteu/xen-orchestra-docker-arm
 ```
 
 - build docker container manually
 
 ```
-docker build -t xen-orchestra .
+bash build.sh
 ```
 
 - or pull from dockerhub
 
 ```
-docker pull ronivay/xen-orchestra
+docker pull ghcr.io/andreitelteu/xen-orchestra-docker-arm:latest
 ```
 
 - run it with defaults values for testing purposes. 
 
 ```
-docker run -itd -p 80:80 ronivay/xen-orchestra
+docker run -itd -p 80:80 ghcr.io/andreitelteu/xen-orchestra-docker-arm:latest
 ```
 
 Xen-Orchestra is now accessible at http://your-ip-address. Default credentials admin@admin.net/admin
@@ -50,7 +55,7 @@ Xen-Orchestra is now accessible at http://your-ip-address. Default credentials a
 - Other than testing, suggested method is to mount data paths from your host to preserve data
 
 ```
-docker run -itd -p 80:80 -v /path/to/data/xo-server:/var/lib/xo-server -v /path/to/data/redis:/var/lib/redis ronivay/xen-orchestra
+docker run -itd -p 80:80 -v /path/to/data/xo-server:/var/lib/xo-server -v /path/to/data/redis:/var/lib/redis ghcr.io/andreitelteu/xen-orchestra-docker-arm:latest
 ```
 
 I also suggest adding --stop-timeout since there are multiple services inside single container and we want them to shutdown gracefully when container is stopped. 
@@ -79,7 +84,7 @@ docker run -itd \
   -p 80:80 \
   -v /path/to/data/xo-server:/var/lib/xo-server \
   -v /path/to/data/redis:/var/lib/redis \
-  ronivay/xen-orchestra
+  ghcr.io/andreitelteu/xen-orchestra-docker-arm:latest
 
 ```
 
@@ -90,7 +95,7 @@ version: '3'
 services:
     xen-orchestra:
         restart: unless-stopped
-        image: ronivay/xen-orchestra:latest
+        image: ghcr.io/andreitelteu/xen-orchestra-docker-arm:latest
         container_name: xen-orchestra
         stop_grace_period: 1m
         ports:
